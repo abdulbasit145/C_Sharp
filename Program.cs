@@ -12,6 +12,7 @@ namespace Assignement_01
 	{
 		static Random random;
 		const int INF = 99999;
+		/*const int INF = int.MaxValue;*/
 
 		/// <summary>
 		/// Main entry point of the program
@@ -23,18 +24,22 @@ namespace Assignement_01
 			int[,] graph = new int[size, size];
 
 			GenerateRandomGraph(graph, size);
+
+			Console.WriteLine("\t----- Initial Graph -----\n");
 			PrintGraph(graph, size);*/
 
-			int size = 4;
+			int size = 5;
 			int[,] graph = {
-				{ 0,   5,  INF, 10 },
-				{ INF, 0,   3, INF },
-				{ INF, INF, 0,   1 },
-				{ INF, INF, INF, 0 }
+				{ 0,   5,  INF, 6, INF },
+				{ INF, 0,   1, INF, 7 },
+				{ 3, INF, 0, 4, INF},
+				{ INF, INF, 2, 0,3 },
+				{ 2, INF, INF, 5,0 }
 			};
 			PrintGraph(graph, size);
-			
 
+
+			Console.WriteLine("\t----- All Pair Shortest Path Graph -----\n");
 			SerialApplicationForAllPairShortestPath(graph, size);
 
 
@@ -45,8 +50,7 @@ namespace Assignement_01
 		/// </summary>
 		/// <param name="graph">It is a 2-D Array represnting graph.</param>
 		/// <param name="size">It is representing the row and column size of the Geraph.</param>
-		/// <returns>A 2-D graph filled with random integers.</returns>
-		static int[,] GenerateRandomGraph(int[,] graph, int size)
+		static void GenerateRandomGraph(int[,] graph, int size)
 		{
 			random = new Random();
 
@@ -58,7 +62,6 @@ namespace Assignement_01
 					graph[i, j] = random.Next(1, 21);
 				}
 			}
-			return graph;
 		}
 
 		/// <summary>
@@ -68,8 +71,6 @@ namespace Assignement_01
 		/// <param name="size">It is representing the row and column size of the Geraph.</param>
 		static void PrintGraph(int[,] graph, int size)
 		{
-			Console.WriteLine("\t----- Initial Graph -----\n");
-
 			for (int i = 0; i < size; i++)
 			{
 				for (int j = 0; j < size; j++)
@@ -85,30 +86,7 @@ namespace Assignement_01
 		}
 
 		/// <summary>
-		/// Method <c>PrintGraphWithAllPairShortestPath</c> print the 2-D graph with shortest path b/w each vertex on console.
-		/// </summary>
-		/// <param name="graph">It is a 2-D Array represnting graph.</param>
-		/// <param name="size">It is representing the row and column size of the Geraph.</param>
-		static void PrintGraphWithAllPairShortestPath(int[,] graph, int size) 
-		{
-			Console.WriteLine("\t----- All Pair Shortest Path Graph -----\n");
-
-			for (int i = 0; i < size; i++)
-			{
-				for (int j = 0; j < size; j++)
-				{
-					if (graph[i, j] == INF)
-						Console.Write("INF".PadRight(10));
-					else
-						Console.Write(graph[i, j].ToString().PadRight(10));
-				}
-				Console.WriteLine();
-			}
-			Console.WriteLine();
-		}
-
-		/// <summary>
-		/// Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path using Flyod Algorithm.
+		/// Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path using Flyod Warshall Algorithm.
 		/// </summary>
 		/// <param name="graph">It is a 2-D Array represnting graph.</param>
 		/// <param name="size">It is representing the row and column size of the Geraph.</param>
@@ -132,7 +110,7 @@ namespace Assignement_01
 				}
 			}
 
-			PrintGraphWithAllPairShortestPath(shortest_path_graph, size);
+			PrintGraph(shortest_path_graph, size);
 		}
 	}
 }
