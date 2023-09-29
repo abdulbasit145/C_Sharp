@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assignement_01</name>
+    </assembly>
+    <members>
+        <member name="T:Assignement_01.Program">
+            <summary>
+            This program find All Pairs Shortest Paths in an n-vertex graph using the following techniques.
+            a) Serial (single threaded) application
+            b) Multithreaded application (using Thread objects)
+            c) Multithreaded application (using a ThreadPool)
+            </summary>
+        </member>
+        <member name="M:Assignement_01.Program.Main(System.String[])">
+            <summary>
+            Main entry point of the program
+            </summary>
+            <param name="args">Command line args</param>
+        </member>
+        <member name="M:Assignement_01.Program.GenerateRandomGraph(System.Int32[0:,0:],System.Int32)">
+            <summary>
+            Method <c>GenerateRandomGraph</c>  create a 2-D graph filled with random Integers.
+            </summary>
+            <param name="graph">It is a 2-D Array represnting graph.</param>
+            <param name="size">It is representing the row and column size of the Geraph.</param>
+            <returns>A 2-D graph filled with random integers.</returns>
+        </member>
+        <member name="M:Assignement_01.Program.PrintGraph(System.Int32[0:,0:],System.Int32)">
+            <summary>
+            Method <c>PrintGraph</c> print the 2-D graph on console.
+            </summary>
+            <param name="graph">It is a 2-D Array represnting graph.</param>
+            <param name="size">It is representing the row and column size of the Geraph.</param>
+        </member>
+        <member name="M:Assignement_01.Program.PrintGraphWithAllPairShortestPath(System.Int32[0:,0:],System.Int32)">
+            <summary>
+            Method <c>PrintGraphWithAllPairShortestPath</c> print the 2-D graph with shortest path b/w each vertex on console.
+            </summary>
+            <param name="graph">It is a 2-D Array represnting graph.</param>
+            <param name="size">It is representing the row and column size of the Geraph.</param>
+        </member>
+        <member name="M:Assignement_01.Program.SerialApplicationForAllPairShortestPath(System.Int32[0:,0:],System.Int32)">
+            <summary>
+            Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path.
+            </summary>
+            <param name="graph">It is a 2-D Array represnting graph.</param>
+            <param name="size">It is representing the row and column size of the Geraph.</param>
+        </member>
+    </members>
+</doc>

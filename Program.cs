@@ -11,8 +11,7 @@ namespace Assignement_01
 	internal class Program
 	{
 		static Random random;
-		static int postive_infinity = int.MaxValue;
-		static int negative_infinity = int.MinValue;
+		const int INF = 99999;
 
 		/// <summary>
 		/// Main entry point of the program
@@ -20,13 +19,25 @@ namespace Assignement_01
 		/// <param name="args">Command line args</param>
 		static void Main(string[] args)
 		{
-			int size = 5;
+			/*int size = 5;
 			int[,] graph = new int[size, size];
 
 			GenerateRandomGraph(graph, size);
-			PrintGraph(graph, size);
+			PrintGraph(graph, size);*/
 
-	
+			int size = 4;
+			int[,] graph = {
+				{ 0,   5,  INF, 10 },
+				{ INF, 0,   3, INF },
+				{ INF, INF, 0,   1 },
+				{ INF, INF, INF, 0 }
+			};
+			PrintGraph(graph, size);
+			
+
+			SerialApplicationForAllPairShortestPath(graph, size);
+
+
 		}
 
 		/// <summary>
@@ -57,17 +68,71 @@ namespace Assignement_01
 		/// <param name="size">It is representing the row and column size of the Geraph.</param>
 		static void PrintGraph(int[,] graph, int size)
 		{
+			Console.WriteLine("\t----- Initial Graph -----\n");
+
 			for (int i = 0; i < size; i++)
 			{
 				for (int j = 0; j < size; j++)
 				{
-					Console.Write(graph[i, j] + "\t");
+					if (graph[i, j] == INF)
+						Console.Write("INF".PadRight(10));
+					else
+						Console.Write(graph[i, j].ToString().PadRight(10));
 				}
 				Console.WriteLine();
 			}
 			Console.WriteLine();
 		}
-		
-		
+
+		/// <summary>
+		/// Method <c>PrintGraphWithAllPairShortestPath</c> print the 2-D graph with shortest path b/w each vertex on console.
+		/// </summary>
+		/// <param name="graph">It is a 2-D Array represnting graph.</param>
+		/// <param name="size">It is representing the row and column size of the Geraph.</param>
+		static void PrintGraphWithAllPairShortestPath(int[,] graph, int size) 
+		{
+			Console.WriteLine("\t----- All Pair Shortest Path Graph -----\n");
+
+			for (int i = 0; i < size; i++)
+			{
+				for (int j = 0; j < size; j++)
+				{
+					if (graph[i, j] == INF)
+						Console.Write("INF".PadRight(10));
+					else
+						Console.Write(graph[i, j].ToString().PadRight(10));
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine();
+		}
+
+		/// <summary>
+		/// Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path.
+		/// </summary>
+		/// <param name="graph">It is a 2-D Array represnting graph.</param>
+		/// <param name="size">It is representing the row and column size of the Geraph.</param>
+		static void SerialApplicationForAllPairShortestPath(int[,] graph, int size)
+		{
+			int[,] shortest_path_graph = new int[size, size];
+
+			for (int i = 0; i < size; ++i)
+				for (int j = 0; j < size; ++j)
+					shortest_path_graph[i, j] = graph[i, j];
+
+			for (int k = 0; k < size; ++k)
+			{
+				for (int i = 0; i < size; ++i)
+				{
+					for (int j = 0; j < size; ++j)
+					{
+						if (shortest_path_graph[i, k] + shortest_path_graph[k, j] < shortest_path_graph[i, j])
+							shortest_path_graph[i, j] = shortest_path_graph[i, k] + shortest_path_graph[k, j];
+					}
+				}
+			}
+
+			PrintGraphWithAllPairShortestPath(shortest_path_graph, size);
+		}
 	}
 }
