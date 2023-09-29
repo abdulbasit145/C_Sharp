@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Assignement_01
 {
@@ -11,8 +12,8 @@ namespace Assignement_01
 	internal class Program
 	{
 		static Random random;
-		const int INF = 99999;
-		/*const int INF = int.MaxValue;*/
+		static readonly Stopwatch stopwatch = new Stopwatch();
+		const int INF = int.MaxValue;
 
 		/// <summary>
 		/// Main entry point of the program
@@ -20,29 +21,25 @@ namespace Assignement_01
 		/// <param name="args">Command line args</param>
 		static void Main(string[] args)
 		{
-			/*int size = 5;
+			int size = 4;
 			int[,] graph = new int[size, size];
 
 			GenerateRandomGraph(graph, size);
 
 			Console.WriteLine("\t----- Initial Graph -----\n");
-			PrintGraph(graph, size);*/
-
-			int size = 5;
-			int[,] graph = {
-				{ 0,   5,  INF, 6, INF },
-				{ INF, 0,   1, INF, 7 },
-				{ 3, INF, 0, 4, INF},
-				{ INF, INF, 2, 0,3 },
-				{ 2, INF, INF, 5,0 }
-			};
 			PrintGraph(graph, size);
 
-
+			
 			Console.WriteLine("\t----- All Pair Shortest Path Graph -----\n");
+
+			stopwatch.Start();
 			SerialApplicationForAllPairShortestPath(graph, size);
+			stopwatch.Stop();
 
+			TimeSpan elapsed_time = stopwatch.Elapsed;
+			Console.WriteLine($"Time taken by Serial Application : {elapsed_time.TotalMilliseconds} milliseconds");
 
+			Console.ReadKey();
 		}
 
 		/// <summary>
@@ -58,8 +55,13 @@ namespace Assignement_01
 			{
 				for (int j = 0; j < size; j++)
 				{
-					// Generate a graph with random number between 1 and 20
-					graph[i, j] = random.Next(1, 21);
+					// Generate a graph with random number between 1 and 100 with 10% probability to add INF in between.
+					int random_value = random.Next(1, 21);
+
+					if (random_value <= 2)
+						graph[i, j] = INF;
+					else
+						graph[i, j] = random_value;
 				}
 			}
 		}
@@ -104,8 +106,11 @@ namespace Assignement_01
 				{
 					for (int k = 0; k < size; k++)
 					{
-						if (shortest_path_graph[j, i] + shortest_path_graph[i, k] < shortest_path_graph[j, k])
-							shortest_path_graph[j, k] = shortest_path_graph[j, i] + shortest_path_graph[i, k];
+						if (shortest_path_graph[j, i] < INF && shortest_path_graph[i, k] < INF)
+						{
+							if (shortest_path_graph[j, i] + shortest_path_graph[i, k] < shortest_path_graph[j, k])
+								shortest_path_graph[j, k] = shortest_path_graph[j, i] + shortest_path_graph[i, k];
+						}
 					}
 				}
 			}

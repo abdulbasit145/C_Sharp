@@ -24,7 +24,6 @@
             </summary>
             <param name="graph">It is a 2-D Array represnting graph.</param>
             <param name="size">It is representing the row and column size of the Geraph.</param>
-            <returns>A 2-D graph filled with random integers.</returns>
         </member>
         <member name="M:Assignement_01.Program.PrintGraph(System.Int32[0:,0:],System.Int32)">
             <summary>
@@ -33,16 +32,9 @@
             <param name="graph">It is a 2-D Array represnting graph.</param>
             <param name="size">It is representing the row and column size of the Geraph.</param>
         </member>
-        <member name="M:Assignement_01.Program.PrintGraphWithAllPairShortestPath(System.Int32[0:,0:],System.Int32)">
-            <summary>
-            Method <c>PrintGraphWithAllPairShortestPath</c> print the 2-D graph with shortest path b/w each vertex on console.
-            </summary>
-            <param name="graph">It is a 2-D Array represnting graph.</param>
-            <param name="size">It is representing the row and column size of the Geraph.</param>
-        </member>
         <member name="M:Assignement_01.Program.SerialApplicationForAllPairShortestPath(System.Int32[0:,0:],System.Int32)">
             <summary>
-            Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path.
+            Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path using Flyod Warshall Algorithm.
             </summary>
             <param name="graph">It is a 2-D Array represnting graph.</param>
             <param name="size">It is representing the row and column size of the Geraph.</param>
