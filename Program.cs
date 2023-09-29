@@ -108,7 +108,7 @@ namespace Assignement_01
 		}
 
 		/// <summary>
-		/// Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path.
+		/// Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path using Flyod Algorithm.
 		/// </summary>
 		/// <param name="graph">It is a 2-D Array represnting graph.</param>
 		/// <param name="size">It is representing the row and column size of the Geraph.</param>
@@ -116,18 +116,18 @@ namespace Assignement_01
 		{
 			int[,] shortest_path_graph = new int[size, size];
 
-			for (int i = 0; i < size; ++i)
-				for (int j = 0; j < size; ++j)
+			for (int i = 0; i < size; i++)
+				for (int j = 0; j < size; j++)
 					shortest_path_graph[i, j] = graph[i, j];
 
-			for (int k = 0; k < size; ++k)
+			for (int i = 0; i < size; i++)
 			{
-				for (int i = 0; i < size; ++i)
+				for (int j = 0; j < size; j++)
 				{
-					for (int j = 0; j < size; ++j)
+					for (int k = 0; k < size; k++)
 					{
-						if (shortest_path_graph[i, k] + shortest_path_graph[k, j] < shortest_path_graph[i, j])
-							shortest_path_graph[i, j] = shortest_path_graph[i, k] + shortest_path_graph[k, j];
+						if (shortest_path_graph[j, i] + shortest_path_graph[i, k] < shortest_path_graph[j, k])
+							shortest_path_graph[j, k] = shortest_path_graph[j, i] + shortest_path_graph[i, k];
 					}
 				}
 			}
