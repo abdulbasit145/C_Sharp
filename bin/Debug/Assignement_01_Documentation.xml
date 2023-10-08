@@ -14,30 +14,46 @@
         </member>
         <member name="M:Assignement_01.Program.Main(System.String[])">
             <summary>
-            Main entry point of the program
+            Main entry point of the program.
             </summary>
             <param name="args">Command line args</param>
         </member>
-        <member name="M:Assignement_01.Program.GenerateRandomGraph(System.Int32[0:,0:],System.Int32)">
+        <member name="M:Assignement_01.Program.GenerateRandomGraph(System.Int32[0:,0:])">
             <summary>
             Method <c>GenerateRandomGraph</c>  create a 2-D graph filled with random Integers.
             </summary>
             <param name="graph">It is a 2-D Array represnting graph.</param>
-            <param name="size">It is representing the row and column size of the Geraph.</param>
         </member>
-        <member name="M:Assignement_01.Program.PrintGraph(System.Int32[0:,0:],System.Int32)">
+        <member name="M:Assignement_01.Program.PrintGraph(System.Int32[0:,0:])">
             <summary>
             Method <c>PrintGraph</c> print the 2-D graph on console.
             </summary>
             <param name="graph">It is a 2-D Array represnting graph.</param>
-            <param name="size">It is representing the row and column size of the Geraph.</param>
         </member>
-        <member name="M:Assignement_01.Program.SerialApplicationForAllPairShortestPath(System.Int32[0:,0:],System.Int32)">
+        <member name="M:Assignement_01.Program.SerializedAllPairShortestPath(System.Int32[0:,0:])">
             <summary>
-            Method <c>SerialApplicationForAllPairShortestPath</c> calculate the all pair shortest path using Flyod Warshall Algorithm.
+            Method <c>SerializedAllPairShortestPath</c> calculate the all pair shortest path using Flyod Warshall Algorithm.
             </summary>
             <param name="graph">It is a 2-D Array represnting graph.</param>
-            <param name="size">It is representing the row and column size of the Geraph.</param>
+        </member>
+        <member name="M:Assignement_01.Program.ThreadedAllPairsShortestPath(System.Int32[0:,0:])">
+            <summary>
+            Method <c>ThreadedAllPairsShortestPath</c> calculate the all pair shortest path using Parrallel Flyod Warshall Algorithm using thread objects.
+            </summary>
+            <param name="graph">It is a 2-D Array represnting graph.</param>
+        </member>
+        <member name="M:Assignement_01.Program.ThreadPoolAllPairShortestPath(System.Int32[0:,0:])">
+            <summary>
+            Method <c>ThreadPoolAllPairShortestPath</c> calculate the all pair shortest path using Parrallel Flyod Warshall Algorithm using thread pool.
+            </summary>
+            <param name="graph">It is a 2-D Array represnting graph.</param>
+        </member>
+        <member name="M:Assignement_01.Program.UpdateRow(System.Int32[0:,0:],System.Int32)">
+            <summary>
+            Method <c>UpdateRow</c> calcullate the value for the Floyd  shortest distance matrix. 
+            </summary>
+            <param name="shortest_path_graph">It is a 2-D Array represnting Floyd  shortest distance graph.</param>
+            <param name="k">It is the outer loop of Floyd Algorithm that handle the update o each row value.</param>
         </member>
     </members>
 </doc>
